@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  jovian-jupyter:
+    container_name: jovian-jupyter
+    image: "jovian-jupyter"
+    command: bash -c "jupyter notebook --notebook-dir=/root/jovian_algorithms --ip='*' --port=8888 --no-browser --allow-root --debug --NotebookApp.token=''"
+    network_mode: "host"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - ~/Git/jovian_algorithms:/root/jovian_algorithms
+      - ~/.ssh:/root/.ssh
+    privileged: true
